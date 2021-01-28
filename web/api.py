@@ -63,19 +63,23 @@ def after_request_func(response):
 
     return response
 ### end CORS section
+### cf) https://developer.mozilla.org/ko/docs/Web/HTTP/CORS
 
 @app.route('/sql', methods=['POST'])
 def sql():
     jsonData = json.loads(request.get_data(), encoding='utf-8')
 
+    #JSON 데이터를 플랫 테이블로 정규화.
     food = pd.json_normalize(jsonData['food'])
     tour = pd.json_normalize(jsonData['tour'])
     hotel = pd.json_normalize(jsonData['hotel'])
     
+    #값 없는 레코드 날리기
     food.dropna(subset=['recomm'], how='all',inplace=True)
     tour.dropna(subset=['recomm'], how='all',inplace=True)
     hotel.dropna(subset=['recomm'], how='all',inplace=True)
 
+    #새로 인덱싱
     food.reset_index(drop = True, inplace = True)
     tour.reset_index(drop = True, inplace = True)
     hotel.reset_index(drop = True, inplace = True)
@@ -84,6 +88,7 @@ def sql():
     tour['same'] = ''
     hotel['same'] = ''
 
+    
     if jsonData['with'] == "혼자":
         
         food_regex = r'(.*.가격이싼)?(.*.가성비or가치있는)?(.*.현지스러운)?(.*.분위기좋은)?(.*.작고아담한)?'

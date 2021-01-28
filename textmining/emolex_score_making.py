@@ -3,20 +3,18 @@
 
 
 ## 필요 라이브러리 ##
-import pandas as pd                 # 테이블 자료구조를 이용하여 데이터 조작 및 분석을 하는 파이썬 라이브러리
-import numpy as np                  # 대규모의 행렬이나 배열을 처리하는 고속 계산 라이브러리
+import pandas as pd                 
+import numpy as np                  
 
 import pickle
-import glob                # 파일 목록을 추출
-import os                  # 디렉토리를 조작
-import re                  # 정규표현식(Regular Expression)을 이용한 문자열 매칭에 이용
-
-from afinn import Afinn                        # 대표적인 eng 감성사전. 긍정(+), 부정(-) 로 분류한다.
-from nltk.corpus import stopwords              # 불용어 처리. the, a, an 같은 의미없는 관사들을 제거해준다.
-from nltk.stem.porter import PorterStemmer     # 어간 추출
-from nltk.tokenize import RegexpTokenizer      # 토큰화
-
-import nltk                    # Natural Languagae Toolkit : 자연어 처리 패키지
+import glob                
+import os                 
+import re              
+from afinn import Afinn # 대표적인 eng 감성사전. 긍정(+), 부정(-) 로 분류.
+from nltk.corpus import stopwords  # 불용어 처리. the, a, an 같은 의미없는 관사들을 제거
+from nltk.stem.porter import PorterStemmer  # 어간 추출
+from nltk.tokenize import RegexpTokenizer   # 토큰화
+import nltk # Natural Languagae Toolkit. 자연어 처리 패키지
 
 tokenizer = RegexpTokenizer('[\w]+')
 count = 0
@@ -46,6 +44,7 @@ restaurant_review = restaurant_review.drop_duplicates(['restaurant','country'])
 restaurant_review.reset_index(drop=True,inplace=True)
 
 for content in restaurant_review['content']:
+    #emolex score 구조 정의
     emolex_score = {
         'joy' : 0,
         'trust' : 0,

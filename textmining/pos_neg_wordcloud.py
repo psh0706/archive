@@ -18,7 +18,7 @@ afinn = Afinn()
 
 
 global wordcloud_neg
-
+#부정
 wordcloud_neg = WordCloud(
         width = 800,
         height = 800,
@@ -26,7 +26,7 @@ wordcloud_neg = WordCloud(
         )
 
 global wordcloud_pos 
-
+#긍정
 wordcloud_pos= WordCloud(
         width = 800,
         height = 800,

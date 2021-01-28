@@ -9,7 +9,7 @@ hannanum = Hannanum()
 font_path = "NanumBarunGothic.ttf"
 
 
-csv_data = pd.read_csv('pr_34_ko.csv', header=None)
+csv_data = pd.read_csv('C:\\Users\\suhyun\\Desktop\\TextMining\\pr_34_ko.csv', header=None)
 count = csv_data.shape[0]
 for i in range(1,count):
     print(csv_data[3][i])

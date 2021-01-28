@@ -60,6 +60,7 @@ bi_gram = []
 #음식점 한곳씩 반복문을 돌린다.
 for index in range(0,len(df_food_review)):
     try:
+        #이미지 존재하는지 확인
         if os.path.isfile('2-gram\\' + df_food_review['country'][index] + '\\{}.png'.format(str(df_food_review['restaurant'][index]))):
             print(str(df_food_review['restaurant'][index]) + "가 존재하므로 다음으로 넘어갑니다")
             continue

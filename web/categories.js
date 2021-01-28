@@ -5,7 +5,6 @@ const mysql = require('mysql2');
 const dra = require('date-range-array')
 const dbconfig = require('../config/database.js');
 
-
 router.post('/', async function (req, res) {
     let title_list = [];
     const pool = mysql.createPool(dbconfig);
@@ -24,7 +23,6 @@ router.post('/', async function (req, res) {
         }
     }
 
-    //test_case()
     async function together_input(type, region) {
         let query_data = [];
         console.log(region.length)
@@ -41,7 +39,15 @@ router.post('/', async function (req, res) {
 
     }
 
-    
+    /*
+    name = 일정 이름,
+    date1 = 여행 시작 날짜,
+    date2 = 여행 끝 날짜,
+    country1 = 사용자가 지정한 여행국가 -> 한글
+    country = DB에서 사용하기 위해 country1을 영문으로 변환한 것
+    region = 지역
+    keyword = 사용자가 선택한 키워드 -> 이 키워드에 맞추어 텍스트 마이닝 된 결과가 추천된다.
+    */
     let name = req.cookies.data.name;
     let date1 = req.cookies.data.firstday;
     let date2 = req.cookies.data.lastday;
@@ -51,6 +57,8 @@ router.post('/', async function (req, res) {
     let country;
     let region = [];
     let keyword = [];
+
+
     if (typeof (req.cookies.data.region) === "string") {
         region[0] = req.cookies.data.region;
     } else
@@ -62,24 +70,29 @@ router.post('/', async function (req, res) {
 
     console.log(keyword);
 
+    //추천 아이템 갯수에 제한두기 225개
     let count = 225 / keyword.length;
+    //실수화
     count = Math.floor(count);
+    
+    //사용자가 선택한 키워드에 맞추어 사용자 지정 지역 이외의 지역 추가
+    //-> 짧은이동과 장거리이동은 둘 중 하나만을 고르도록 되어있다.
     for (let i = 0; i < req.body.keyword.length; i++) {
         if (keyword[i] === "짧은이동") {
-            let short_dis = [];
+            let short_dis = []; //짧은 거리에 있는 지역들을 가져옴
             for (let i = 0; i < region.length; i++) {
-                const [short] = await promisepool.query(`SELECT short_dis FROM location where region = "${region[i]}" `);
+                const [short] = await promisepool.query(`SELECT short_dis FROM location where region = "${region[i]}" `); //DB에 space로 구분되어 하나의 행에 들어가있다.
                 short_dis.push({
-                    "region": short[0].short_dis.split(' ')
+                    "region": short[0].short_dis.split(' ') //split 해서 지역 하나하나 push
                 })
             }
             for (let j = 0; j < short_dis.length; j++) {
-                region.push(short_dis[j].region[0])
+                region.push(short_dis[j].region[0])//region에 추가해서 이후 쿼리문에서 사용한다. 사용자가 지정한 지역 이외에도 가까운 거리의 지역이 추가로 추천된다.
             }
             console.log(region)
-
-
         }
+
+        // 위와 같은 구조
         if (keyword[i] === "장거리이동") {
             let long_dis = [];
             for (let i = 0; i < region.length; i++) {
@@ -95,8 +108,10 @@ router.post('/', async function (req, res) {
         }
     }
 
+    //추가된 지역을 기반으로 쿼리에서 사용될 string을 만든다.
     let city_query = queryMaker(region);
 
+    //쿼리에서 사용될 수 있도록 변환
     if (country1 === "태국") {
         country = "thailand";
     } else if (country1 === "일본") {
@@ -126,6 +141,7 @@ router.post('/', async function (req, res) {
            const couple = await together_input("연인", region);
         }
         if (keyword[i] === "럭셔리") {
+            //럭셔리 키워드에 맞는 쿼리들을 이용하여 
             let luxury = `select * from food_info where price =1 and price_score >=4.0 and country = \"${country}\" and region in ( select distinct(region) from food_info where ${city_query}) limit ` + count + `;`;
             let luxury2 = `select * from food_info where recomm LIKE "%고급스러운/비싼%" and recomm LIKE "%분위기%" and country = "${country}" and region in ( select distinct(region) from food_info where ${city_query}) limit ` + count + `;`;
             let luxury3 = `select * from hotel_info where region in ( select distinct(region) from tour_info where ${city_query}) and  price_count >= 250000 limit ` + count + `;`;
