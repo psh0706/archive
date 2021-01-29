@@ -13,12 +13,12 @@ Repository에 push 되어있는 디렉토리들은, 그 중 크롤링, 텍스트
 	중간중간 주석을 달기는 했었으나, 이미지를 포함한 자세한 코드 리뷰는 **크롤링 코드 핵심 정리.pptx** 에도 있습니다.  
 + **기술스택**  
 	+ **Language**  
-			python3  : 주 언어로 python3를 사용했습니다.		
+			`python3`  : 주 언어로 python3를 사용했습니다.		
 	+ **Library**  
-			beautifulsoup4 : 정적인 요소를 크롤링 할 때 사용했습니다.  
-			Selenium : click event 등 동적인 요소를 크롤링 할 때 사용했습니다. 
-	+ **ect**
-			chromedriver.exe : 크롤링 시 크롬을 제어하기 위한 프로그램입니다.
+			`beautifulsoup4` : 정적인 요소를 크롤링 할 때 사용했습니다.  
+			`Selenium` : click event 등 동적인 요소를 크롤링 할 때 사용했습니다. 
+	+ **ect**  
+			`chromedriver.exe` : 크롤링 시 크롬을 제어하기 위한 프로그램입니다. (구글제공)
 + **요약**  
 	|INDEX|코드명|요약설명|LOC|비고|
 	|:---:|:--- | :--- |:---:|:---|
