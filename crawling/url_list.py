@@ -23,12 +23,12 @@ from Strapy import Strapy
 class ScrapingList(Strapy):
 
 
-    list_title = str('') # 호텔 리스트의 타이틀 의미
-    list_endpage_number = int(0) # 호텔 리스트의 끝 페이지 번호
+    list_title = str('') # 리스트의 타이틀 의미
+    list_endpage_number = int(0) # 리스트의 끝 페이지 번호
 
-    name_list = list() # 호텔 리스트에서의 각각 이름들을 담는 리스트
-    url_list = list() # 호텔 리스트에서의 각각 주소들을 담는 리스트
-    review_count_list = list() # 호텔 리스트에서의 각각 리뷰 개수를 담는 리스트
+    name_list = list() # 리스트에서의 각각 이름들을 담는 리스트
+    url_list = list() # 리스트에서의 각각 주소들을 담는 리스트
+    review_count_list = list() # 리스트에서의 각각 리뷰 개수를 담는 리스트
 
 
     def __init__(self, headless = None, target_url = None, chrome_driver_path = None):

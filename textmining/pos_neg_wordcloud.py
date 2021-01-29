@@ -7,14 +7,7 @@ import numpy as np
 from afinn import Afinn
 import os
 
-with open("food_review_merge.txt", "rb") as f: 
-    df_food_review = pickle.load(f)
-    
-df_food_review = df_food_review.drop_duplicates(['restaurant','country'])
-df_food_review['restaurant'] = df_food_review['restaurant'].str.lower()
-df_food_review.reset_index(drop=True,inplace=True)
 
-afinn = Afinn()
 
 
 global wordcloud_neg
@@ -109,7 +102,16 @@ def afinn_map(df_food_review):
         
     print(str(df_food_review['restaurant'])) 
     
+if __name__ == "__main__" :
+    with open("food_review_merge.txt", "rb") as f: 
+    df_food_review = pickle.load(f)
+    
+    df_food_review = df_food_review.drop_duplicates(['restaurant','country'])
+    df_food_review['restaurant'] = df_food_review['restaurant'].str.lower()
+    df_food_review.reset_index(drop=True,inplace=True)
 
-df_food_review.apply(afinn_map, axis = 1)
+    afinn = Afinn()
+    
+    df_food_review.apply(afinn_map, axis = 1)
 
-print('end')
+    print('end')

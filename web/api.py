@@ -5,7 +5,6 @@ from flask_restful import Resource, Api
 from flask_restful import reqparse
 from flask import request
 from flask_cors import CORS, cross_origin, logging
-from sklearn.feature_extraction.text import TfidfVectorizer
 import pymysql
 import pickle
 import os

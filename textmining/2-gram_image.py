@@ -5,13 +5,11 @@ from nltk.stem.porter import PorterStemmer  # 어근추출
 from nltk.tokenize import RegexpTokenizer  # 정규표현식을 사용하여 단어 토큰화를 제공
 from nltk.corpus import stopwords  # 불용어 정의
 import os
-import glob
 import re
 from collections import Counter
 from wordcloud import WordCloud
 import matplotlib.pyplot as plt
 import pickle
-import gc
 
 
 # 전처리가 완료된 pickle파일을 불러온다

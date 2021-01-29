@@ -6,11 +6,9 @@
 import pandas as pd                 
 import numpy as np                  
 
-import pickle
-import glob                
+import pickle          
 import os                 
 import re              
-from afinn import Afinn # 대표적인 eng 감성사전. 긍정(+), 부정(-) 로 분류.
 from nltk.corpus import stopwords  # 불용어 처리. the, a, an 같은 의미없는 관사들을 제거
 from nltk.stem.porter import PorterStemmer  # 어간 추출
 from nltk.tokenize import RegexpTokenizer   # 토큰화
@@ -55,10 +53,11 @@ for content in restaurant_review['content']:
         'fear' : 0,
         'disgust' : 0
     }
+    #토큰화
     tokens = tokenizer.tokenize(content)
-    NRC_N = NRC[NRC['word'].isin(tokens)].copy()
+    #토큰화 한거랑 감성사전 단어 매칭
     match_words = list(filter(filter_emotion, tokens))
-    #match_words = [x for x in tokens if x in list(NRC_N['word'])]
+
     emotion_list = []
     for match_word in match_words:
         emotions = list(NRC[NRC['word'].isin([match_word])]['emotion'])
@@ -88,4 +87,6 @@ for content in restaurant_review['content']:
                                   , emolex_score['anger'], emolex_score['fear'], emolex_score['disgust']]
     print(count, '번째가 완료되었습니다. ')
     count += 1
-df_emolex_score.to_csv("emolex_score_sample.csv")
+
+if __name__ == "__main__" :
+    df_emolex_score.to_csv("emolex_score_sample.csv")
