@@ -6,7 +6,7 @@ import time
 import gc
 
 
-
+# 여행고수 팀 - 박수현 작성
 # 2019.11.03 ver. 리뷰 취합코드 
 # info 까지 전부 돌린 국가>지역 파일 필요.
 # ** 기능 **
@@ -15,7 +15,7 @@ import gc
 # 3) 지역 컬럼 추가
 
 
-##전역변수 - stateName/dirname 은 돌릴 때 마다 변경
+##전역변수 - stateName/dirname 은 돌릴 때 마다 변경해주세요.
 ## stateName = 국가 이름
 ## dirname = 국가 폴더 경로
 dirname = str("C:\\tripAdvisor2\\Taiwan")

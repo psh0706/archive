@@ -23,7 +23,7 @@ filename = "excite_urls_Alishan의 즐길거리.csv"
 
 class ScrapingInfo(Strapy):
 
-    # info
+    # info - 기본값으로 초기화
     name = 'NoName'
     avg_rating = 0.1
     address = 'NoAddress'
@@ -33,8 +33,8 @@ class ScrapingInfo(Strapy):
     category = list()
     
 
-    # from url list  호텔리스트로 스크래핑 한 것
-    #정렬시키면 안됨!!!
+    # from url_list.csv 관광지 url 리스트 가져오기 위한 struct
+    #정렬시키지 말 것 - > 같은 관광지는 같은 인덱스로 관리. 정렬시킬 시 틀어짐
     url_dict_struct = {
         'titles' : [],
         'urls' : [],
@@ -93,9 +93,7 @@ class ScrapingInfo(Strapy):
 
 
         """
-        #누락분이 있을경우 -1로 바꾸어 주어서 에러처리 // 원래 이렇게 에러처리 하면 안됌,,, 위에서 값을 받아올 때마다 예외처리를 해준당
-        if self.name == -1 or self.avg_rating == -1 or self.address == -1 or self.call_number == -1 or self.category == -1 or self.opening_hours == -1 or self.recommend_time == -1:
-            return -1
+        #누락분이 있을경우 -1로 바꾸어 주어서 에러처리 해줌
         """
 
         return

@@ -17,32 +17,29 @@ import re # 정규 표현식
 # Module
 from Strapy import Strapy 
 
-# Global Area
-# #
-
 class ScrapingList(Strapy):
 
 
-    list_title = str('') # 리스트의 타이틀 의미
+    list_title = str('') #  리스트의 타이틀 의미 ex) "방콕의 즐길거리"
     list_endpage_number = int(0) # 리스트의 끝 페이지 번호
 
     name_list = list() # 리스트에서의 각각 이름들을 담는 리스트
     url_list = list() # 리스트에서의 각각 주소들을 담는 리스트
     review_count_list = list() # 리스트에서의 각각 리뷰 개수를 담는 리스트
 
-
+    #초기화
     def __init__(self, headless = None, target_url = None, chrome_driver_path = None):
-        super().__init__(headless, target_url, chrome_driver_path)
+        super().__init__(headless, target_url, chrome_driver_path) 
         return None
 
 
-
-
     def startScraping(self): # scraping을 시작하는 함수
-
+        
+        #국가/지역 별로 url을 list 화
         self.loadWebDriver(False, "https://www.tripadvisor.co.kr/Attractions-g13792389-Activities-Alishan_Chiayi_County.html", "./chromedriver.exe")
         self.refreshInstance()
 
+        #필터링 해제 -> 모든 리스트가 보이도록 함
         self.deleteCheck()
 
         self.list_title = self.scrapTitle() # 타이틀 받아오기.
@@ -57,7 +54,7 @@ class ScrapingList(Strapy):
     def deleteCheck(self):
         css_delete_check = self.chrome_instance.find_element_by_css_selector("#ATTRACTION_FILTER > div > div > div> div")
 
-        if(css_delete_check is None):
+        if(css_delete_check is None): #필터링 체크 안되어있다면 별도의 action 없음
             return 0
         else:
             self.chrome_instance.execute_script("arguments[0].click();", css_delete_check) # 클릭
@@ -77,15 +74,17 @@ class ScrapingList(Strapy):
             ex.to_csv('excite_urls_{}.csv'.format(local_title), index=False, encoding = 'utf-8')
         else:
             ex.to_csv('excite_urls_{}.csv'.format(local_title), mode='a', header=False, index=False ,encoding = 'utf-8')
-
-    def scrapTitle(self): # 리스트의 제목 받아오기
+    
+    
+    # 리스트의 제목 받아오기
+    def scrapTitle(self): 
         html = self.chrome_instance.page_source 
-        # is, == 연산을 통해완벽하게 str형 복사가 됨을 확인 -> stale 원천 차단 완료.
 
         bs = BeautifulSoup(html, 'html.parser')
-        titles = bs.select('li.breadcrumb') # title에 해당하는 태그를 받아옴. 바꿔야함
+        titles = bs.select('li.breadcrumb')
         titles = titles[-1].text
         
+        # 자동으로 calender 팝업이 뜸 >> 없애줘야한다.
         # Calender 제거를 위해 제목 태그를 클릭.
         for e_count in range(1, self.EXCEPTION_COUNT):
             try:
@@ -101,6 +100,7 @@ class ScrapingList(Strapy):
         time.sleep(3)
         return titles
     
+    #페이지네이션의 마지막 페이지 넘버 가져오기
     def scrapEndPageNumber(self):
         html = self.chrome_instance.page_source
 
@@ -109,6 +109,7 @@ class ScrapingList(Strapy):
 
         return (int)(end_page_tags[-1].text)
 
+    #스크래핑 시작 함수
     def scrapContents(self):
         html = self.chrome_instance.page_source
         bs = BeautifulSoup(html, 'html.parser')
