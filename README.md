@@ -97,6 +97,4 @@ Repository에 push 되어있는 디렉토리들은, 그 중 크롤링, 텍스트
 	|2| api.py | 웹 서버가 호출해 쓰는 restful api로, category.js에서 호출해 사용| 620 |  |  
   
   
-***	  
-  
-# 중심적으로 보면 좋을 것 같은 코드들 
+
