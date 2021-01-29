@@ -24,12 +24,12 @@ Repository에 push 되어있는 디렉토리들은, 그 중 크롤링, 텍스트
 + **요약**  
 	|INDEX|코드명|요약설명|LOC|비고|
 	|:---:|:--- | :--- |:---:|:---|
-	|1| url_list.py | 관광지 관련 페이지 url을 크롤링해 리스트화 |  |  |  
-	|2| play_info.py | **1**의 결과를 이용해 상세 정보를 크롤링 |  |  |  
-	|3| play_review.py | **1**의 결과를 이용해 리뷰 크롤링 | |  |  
-	|4| Strap.py | 크롤링에 필요한 기본 함수를 모듈화 |  |  |   
-	|5| gathering.py | 크롤링에 필요한 기본 함수를 모듈화 |  |  |  
- 	|6| 음식점 info 위경도 추가.ipynb | 주소 정보를 이용하여 문서에 위,경도를 추가 |  |jupyter, 레스토랑 파트|
+	|1| url_list.py | 관광지 관련 페이지 url을 크롤링해 리스트화 | 200 |  |  
+	|2| play_info.py | **1**의 결과를 이용해 상세 정보를 크롤링 | 400 |  |  
+	|3| play_review.py | **1**의 결과를 이용해 리뷰 크롤링 | 730 |  |  
+	|4| Strap.py | 크롤링에 필요한 기본 함수를 모듈화 | 158 |  |   
+	|5| gathering.py | 크롤링에 필요한 기본 함수를 모듈화 | 135 |  |  
+ 	|6| 음식점 info 위경도 추가.ipynb | 주소 정보를 이용하여 문서에 위,경도를 추가 | - |jupyter, 레스토랑 파트|
   
 ***
 ### Textmining  
@@ -52,15 +52,15 @@ Repository에 push 되어있는 디렉토리들은, 그 중 크롤링, 텍스트
 	+ **ect**  
 			`NRC.txt` : 미리 정의되어있는 감성사전 입니다.  
 + **요약**  
-	|INDEX|코드명|요약설명|LOC|비고|
+	|INDEX|코드명|요약설명|LOC(ABT)|비고|
 	|:---:|:--- | :--- |:---:|:---|
-	|1| 2-gram_image.py | 바이그램을 워드클라우드화 하여 저장 |  |  |  
-	|2| bindo_en.py | 단어의 빈도수를 추출하여 워드클라우드로 만든 짧은 코드 (영어 ver.)|  |  |  
-	|3| bindo_kr.py | 단어의 빈도수를 추출하여 워드클라우드로 만든 짧은 코드 (한국어 ver.) |  |  |  
-	|4| emolex_score_making.py | 감성점수를 계산해서 csv로 저장 | |  | 
-	|5| emolex_to_img.py | **4**의 결과를 이용해 chart img를 저장 |  |  |   
-	|6| TF-IDF.ipynb | 도시별 레스토랑들의 TF-IDF 값을 계산해 저장 |  |jupyter|  
-	|7| 영어리뷰 빈도분석 (bi-gram).ipynb | 도시별 레스토랑들의 TF-IDF 값을 계산해 저장 |  |jupyter|
+	|1| 2-gram_image.py | 바이그램을 워드클라우드화 하여 저장 | 100 |  |  
+	|2| bindo_en.py | 단어의 빈도수를 추출하여 워드클라우드로 만든 짧은 코드 (영어 ver.)| 65 |  |  
+	|3| bindo_kr.py | 단어의 빈도수를 추출하여 워드클라우드로 만든 짧은 코드 (한국어 ver.) | 55 |  |  
+	|4| emolex_score_making.py | 감성점수를 계산해서 csv로 저장 | 90 |  | 
+	|5| emolex_to_img.py | **4**의 결과를 이용해 chart img를 저장 |30 |  |   
+	|6| TF-IDF.ipynb | 도시별 레스토랑들의 TF-IDF 값을 계산해 저장 | 100 |jupyter|  
+	|7| 영어리뷰 빈도분석 (bi-gram).ipynb | 도시별 레스토랑들의 TF-IDF 값을 계산해 저장 |-  |jupyter|
   
  
 ***	
@@ -71,13 +71,15 @@ Repository에 push 되어있는 디렉토리들은, 그 중 크롤링, 텍스트
 + **기술스택**  
 	+ **Language**  
 			`javascript` : 웹 구현 시 사용했습니다.
+	+ **Library(python)**   
+			`flask framework` : 웹서버와의 통신을 위한 용도로 사용하였습니다.
 	+ **ect**  
 			`Node.js express framework` : 웹서버 개발시 사용한 프레임워크 입니다.
 + **요약**  
 	|INDEX|코드명|요약설명|LOC|비고|
 	|:---:|:--- | :--- |:---:|:---|
-	|1| category.js|사용자가 선택한 키워드+여행일정+여행지 정보를 받아 여행지를 추천해주는 백엔드 code |  |  |  
-	|2| api.py | 웹 서버가 호출해 쓰는 restful api로, category.js에서 호출해 사용|  |  |  
+	|1| category.js|사용자가 선택한 키워드+여행일정+여행지 정보를 받아 여행지를 추천해주는 백엔드 code | 380 |  |  
+	|2| api.py | 웹 서버가 호출해 쓰는 restful api로, category.js에서 호출해 사용| 620 |  |  
   
   
 ***	  
