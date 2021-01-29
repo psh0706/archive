@@ -126,7 +126,8 @@ router.post('/', async function (req, res) {
 
     //선택한 키워드를 불러올때 req.body.keword[n] 으로 하면 해당하는 키워드 인덱스 값에 맞게 불러옴
     for (let i = 0; i < req.body.keyword.length; i++) {
-
+        //혼.애.가.친 은 관광지 레스토랑 호텔 모두 포함해야됨
+        //api에서 정렬 이루어짐
         if (keyword[i] === "혼자") {
             const alone = await together_input("혼자", region);
             console.log(alone)
@@ -141,7 +142,6 @@ router.post('/', async function (req, res) {
            const couple = await together_input("연인", region);
         }
         if (keyword[i] === "럭셔리") {
-            //럭셔리 키워드에 맞는 쿼리들을 이용하여 
             let luxury = `select * from food_info where price =1 and price_score >=4.0 and country = \"${country}\" and region in ( select distinct(region) from food_info where ${city_query}) limit ` + count + `;`;
             let luxury2 = `select * from food_info where recomm LIKE "%고급스러운/비싼%" and recomm LIKE "%분위기%" and country = "${country}" and region in ( select distinct(region) from food_info where ${city_query}) limit ` + count + `;`;
             let luxury3 = `select * from hotel_info where region in ( select distinct(region) from tour_info where ${city_query}) and  price_count >= 250000 limit ` + count + `;`;
@@ -305,8 +305,7 @@ router.post('/', async function (req, res) {
 
     }
 
-   // title_list = Array.from(title_list.reduce((m, t) => m.set(t.lat, t), new Map()).values());
-   // console.log(title_list)
+    //연결정보
     var options = {
         'method': 'POST',
         'url': 'http://server.djai.kr:40002/sqll',
@@ -315,7 +314,7 @@ router.post('/', async function (req, res) {
         },
         body: JSON.stringify({"title_list": title_list})
     }
-
+    
     let data = await request(options)
         .then(function (parsedBody) {
 
