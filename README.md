@@ -69,7 +69,7 @@ Repository에 push 되어있는 디렉토리들은, 그 중 크롤링, 텍스트
 	|3| bindo_kr.py | 단어의 빈도수를 추출하여 워드클라우드로 만든 짧은 코드 (한국어 ver.) | 55 |  |  
 	|4| emolex_score_making.py | 감성점수를 계산해서 csv로 저장 | 90 |  | 
 	|5| emolex_to_img.py | **4**의 결과를 이용해 chart img를 저장 |30 |  |   
-	|6| TF-IDF.ipynb | 도시별 레스토랑들의 TF-IDF 값을 계산해 저장 | 100 |jupyter|  
+	|6| TF-IDF.ipynb | 도시별 레스토랑들의 TF-IDF 값을 계산해 저장 | - |jupyter|  
 	|7| 영어리뷰 빈도분석 (bi-gram).ipynb | 도시별 레스토랑들의 TF-IDF 값을 계산해 저장 |-  |jupyter|
   
  
