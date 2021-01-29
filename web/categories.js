@@ -9,6 +9,7 @@ router.post('/', async function (req, res) {
     let title_list = [];
     const pool = mysql.createPool(dbconfig);
     const promisepool = pool.promise();
+
     async function review_input(review, categorie, keyword) {
         for (let i = 0; i < review.length; i++) {
             await title_list.push({
@@ -72,7 +73,6 @@ router.post('/', async function (req, res) {
 
     //추천 아이템 갯수에 제한두기 225개
     let count = 225 / keyword.length;
-    //실수화
     count = Math.floor(count);
     
     //사용자가 선택한 키워드에 맞추어 사용자 지정 지역 이외의 지역 추가
