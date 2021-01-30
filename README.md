@@ -73,7 +73,7 @@ Repository에 push 되어있는 디렉토리들은, 그 중 크롤링, 텍스트
 	|5| emolex_to_img.py | **4**의 결과를 이용해 chart img를 저장 |30 |  |   
 	|6| pos_neg_wordcloud.py | 긍정/부정 워드클라우드를 생성 | 115 |jupyter|
 	|7| TF-IDF.ipynb | 도시별 레스토랑들의 TF-IDF 값을 계산해 저장 | - |jupyter|  
-	|8| 영어리뷰 빈도분석 (bi-gram).ipynb | 도시별 레스토랑들의 TF-IDF 값을 계산해 저장 |-  |jupyter|
+	|8| 영어리뷰 빈도분석 (bi-gram).ipynb |불용어를 새롭게 추가한 변형 bi-gram|-  |jupyter|
   
  
 ***	
