@@ -1,4 +1,5 @@
-  
+[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fgjbae1212%2Fhit-counter&count_bg=%23FFCF00&title_bg=%23585858&icon=statuspage.svg&icon_color=%23FFFFFF&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)
+
 # Introduction
 
 해당 문서들은 자대의 연구실에서 경험했던 장기프로젝트에서 코드리뷰를 하기에 적합한 일부를 발췌한 것입니다.  
@@ -98,6 +99,13 @@ Repository에 push 되어있는 디렉토리들은, 그 중 크롤링, 텍스트
 	|:---:|:--- | :--- |:---:|:---|
 	|1| category.js|사용자가 선택한 키워드+여행일정+여행지 정보를 받아 여행지를 추천해주는 백엔드 code | 380 |  |  
 	|2| api.py | 웹 서버가 호출해 쓰는 restful api로, category.js에서 호출해 사용| 620 |  |  
+    
   
   
+  
+
+  
+#### 📧Contacts  
+[![navermail Badge](https://img.shields.io/badge/Naver-2DB400?style=flat-square&logo=Nintendo&logoColor=white&link=mailto:best8427@naver.com)](mailto:best8427@naver.com)
+[![Gmail Badge](https://img.shields.io/badge/Gmail-d14836?style=flat-square&logo=Gmail&logoColor=white&link=mailto:best8427@gmail.com)](mailto:best8427@gmail.com)
 
