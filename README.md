@@ -1,4 +1,5 @@
 [![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fpsh0706%2Fportfolio.git&count_bg=%23FFD41B&title_bg=%23555555&icon=statuspage.svg&icon_color=%23FFFFFF&title=hits&edge_flat=true)](https://hits.seeyoufarm.com)
+![followers](https://img.shields.io/github/followers/psh0706?style=social)
 
 # Introduction
 
