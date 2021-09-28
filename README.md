@@ -1,6 +1,4 @@
 [![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fpsh0706%2Fportfolio.git&count_bg=%23FFD41B&title_bg=%23555555&icon=statuspage.svg&icon_color=%23FFFFFF&title=hits&edge_flat=true)](https://hits.seeyoufarm.com)
-![followers](https://img.shields.io/github/followers/psh0706?style=social)
-
 # Introduction
 
 해당 문서들은 자대의 인공지능 연구실에서 경험했던 장기프로젝트에서 코드리뷰를 하기에 적합한 일부를 발췌한 것입니다. 
